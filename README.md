@@ -1,2 +1,2 @@
 # CW
-Welcom to the Crump Wedding website!
+Welcome to the Crump Wedding website!
