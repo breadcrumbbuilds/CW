@@ -1,7 +1,8 @@
 <?php
-if($_POST["message"]) {
-mail("bradrcrump@gmail.com", "Here is the subject line",
-$_POST["insert your message here"]. "From: an@email.address");
+if($_POST["rsvp"])
+{
+	mail("bradrcrump@gmail.com", $_POST["name"],
+	"from: $_POST["email"]"");
 }
 
 ?>
@@ -132,12 +133,19 @@ $_POST["insert your message here"]. "From: an@email.address");
 						<input type="email" name="email" id="email" placeholder="Email" />
 					</div>
 					<div class="col-12">
-						<textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
+						<h3>Will you be in attendance?</h3>
+						<input type="radio" id="yes" name="attend" value="Yes">
+						<label for="yes">Yes</label><br>
+						<input type="radio" id="no" name="attend" value="No">
+						<label for="no">No</label><br>
+					</div>
+					<div class="col-12">
+						<textarea name="guests" id="message" placeholder="Who will be attending with you" rows="4"></textarea>
 					</div>
 					<div class="col-12">
 						<ul class="actions special">
 							<li>
-								<input type="submit" value="Send Message" class="primary" />
+								<input type="submit" value="RSVP" class="primary" />
 							</li>
 						</ul>
 					</div>
