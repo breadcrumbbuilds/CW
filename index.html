@@ -126,7 +126,7 @@ if($_POST["rsvp"])
 			<header class="major">
 				<h2>RSVP</h2>
 			</header>
-			<form name="rsvp" method="post" action="rsvp-handler.php" enctype=”multipart/form-data”>
+			<form name="rsvp" method="post" action="saveFile()" enctype=”multipart/form-data”>
 				<div class="row gtr-uniform">
 					<div class="col-6 col-12-xsmall">
 						<input type="text" name="name" id="name" placeholder="First and Last Name" />
@@ -165,6 +165,43 @@ if($_POST["rsvp"])
 		frmvalidator.addValidation("email","req","Please provide your email");
 		frmvalidator.addValidation("email","email", "Please enter a valid email address");
 	</script>
+
+	<script>
+		  let saveFile = () => {
+
+        // Get the data from each element on the form.
+		const name = document.getElementById('name');
+		const attending = document.getElementById('attend');
+        const email = document.getElementById('email');
+        const message = document.getElementById('message');
+
+        // This variable stores all the data.
+        let data =
+            '\r Name: ' + name.value + ' \r\n ' +
+            'Age: ' +age.value + ' \r\n ' +
+            'Email: ' + email.value + ' \r\n ' +
+            'Attending: ' + attending.value + ' \r\n ' +
+            'Message: ' + msg.value;
+
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = name + '.txt';	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        // newLink.click();
+    }
+</script>
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
